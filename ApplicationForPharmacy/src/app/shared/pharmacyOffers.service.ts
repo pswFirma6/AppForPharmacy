@@ -9,7 +9,7 @@ export class PharmacyOffersService {
 
     formCreatingNewOffer: PharmacyOfferModel = new PharmacyOfferModel();
 
-    constructor(private http: HttpClient, public service: PharmacyOffersService) { }
+    constructor(private http: HttpClient) { }
 
     postLogin(){
     }
