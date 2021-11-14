@@ -10,6 +10,7 @@ import { HospitalRegistrationComponent } from './hospitalRegistration/hospitalRe
 import { MedicationsComponent } from './medications/medications.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { LandingComponent } from './landing/landing.component';
+import { PharmacyOfferFormComponent } from './pharmacy-offer-form/pharmacy-offer-form.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { LandingComponent } from './landing/landing.component';
     SidebarComponent,
     MedicationsComponent,
     LandingComponent,
+    PharmacyOfferFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,6 +29,7 @@ import { LandingComponent } from './landing/landing.component';
       { path: 'hospitalRegistration', component: HospitalRegistrationComponent },
       { path: 'landing', component: LandingComponent },
       { path: 'medications', component: MedicationsComponent },
+      { path: 'offers', component: PharmacyOfferFormComponent },
       { path: '', redirectTo: 'landing', pathMatch: 'full' },
       { path: '**', redirectTo: 'landing', pathMatch: 'full' }
     ]),
