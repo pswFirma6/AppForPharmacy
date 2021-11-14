@@ -18,6 +18,11 @@ export class SidebarComponent {
             path: '/hospitalRegistration',
             title: 'REGISTER YOUR HOSPITAL',
             class: ''
+        },
+        {
+            path: '/offers',
+            title: 'ACTIONS AND BENEFITS',
+            class: ''
         }
     ]
   
