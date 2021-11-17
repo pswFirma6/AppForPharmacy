@@ -8,10 +8,12 @@ import { PharmacyOfferModel } from "./pharmacyOffer.model";
 export class PharmacyOffersService {
 
     formCreatingNewOffer: PharmacyOfferModel = new PharmacyOfferModel();
-
+    readonly baseUrl = "https://localhost:44377/createOffer";
     constructor(private http: HttpClient) { }
 
     postLogin(){
+      console.log(this.formCreatingNewOffer);
+      return this.http.get(this.baseUrl);
     }
 
     createOffer(){

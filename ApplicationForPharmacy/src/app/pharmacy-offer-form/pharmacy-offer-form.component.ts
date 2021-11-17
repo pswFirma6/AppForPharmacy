@@ -15,7 +15,16 @@ export class PharmacyOfferFormComponent implements OnInit {
   }
 
   onSubmit(form: NgForm){
+    this.service.postLogin().subscribe(
+      (res) => {
+        console.log("Successfuly added offer to database");
+        
+      }, err => {
+        console.log(err.message);
+      }
     
+    
+    );
   }
 
 }
