@@ -14,7 +14,9 @@ export class ConsumptionReportComponent implements OnInit {
   }
 
   Download(){
-    this.service.downloadReport();
+
+    this.service.downloadReport()
+    .subscribe();
   }
 
 }
