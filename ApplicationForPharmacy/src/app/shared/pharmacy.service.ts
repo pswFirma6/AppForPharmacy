@@ -9,7 +9,10 @@ import { Observable } from 'rxjs';
 
 export class PharmacyService {
 
-    formChoosePharmacy: PharmacyModel = new PharmacyModel();
+    formChoosePharmacy: PharmacyModel = {
+        pharmacyName : "Our Pharmacy",
+        apiKey: "abcdefgh"
+    };
     readonly pharmacyBase = "https://localhost:44377/pharmacyNames";
     pharmacyNames: string[] = [];
     

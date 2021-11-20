@@ -18,12 +18,12 @@ export class HospitalRegistrationComponent implements OnInit{
     }
 
     onSubmit(form: NgForm){
-        this.service.postLogin().subscribe(
+        this.service.registerHospital().subscribe(
           (res) => {
             console.log("Successfuly registered hospital to database");
             
           }
-        ),
+        )
         this.service.registerPharmacy().subscribe(
             (res) => {
                 console.log("Successfuly registered pharmacy to database");

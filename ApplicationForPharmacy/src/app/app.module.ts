@@ -31,11 +31,10 @@ import { PharmacyOffersComponent } from './pharmacy-offers/pharmacy-offers.compo
     RouterModule.forRoot([
       { path: 'home', component: HomePageComponent },
       { path: 'hospitalRegistration', component: HospitalRegistrationComponent },
-      { path: 'landing', component: LandingComponent },
       { path: 'medications', component: MedicationsComponent },
       { path: 'offers', component: PharmacyOfferComponent },
-      { path: '', redirectTo: 'landing', pathMatch: 'full' },
-      { path: '**', redirectTo: 'landing', pathMatch: 'full' }
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
+      { path: '**', redirectTo: 'home', pathMatch: 'full' }
     ]),
     FormsModule,
     HttpClientModule
