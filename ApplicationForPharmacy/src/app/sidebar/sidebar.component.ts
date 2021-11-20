@@ -23,6 +23,11 @@ export class SidebarComponent {
             path: '/offers',
             title: 'ACTIONS AND BENEFITS',
             class: ''
+        },
+        {
+            path: '/report',
+            title: 'CONSUMPTION REPORT',
+            class: ''
         }
     ]
   
