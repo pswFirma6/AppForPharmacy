@@ -9,19 +9,18 @@ import { PharmacyService } from './pharmacy.service';
 export class HospitalRegistrationService {
 
     formHospitalRegistration: HospitalRegistrationModel = new HospitalRegistrationModel();
-    readonly baseUrl = "https://localhost:44377/registerHospital";
-    readonly baseUrl2 = "https://localhost:44317/api/Feedbacks/registerPharmacy";
+    readonly pharmacyBaseUrl = "https://localhost:44377/registerHospital";
+    readonly hospitalBaseUrl = "https://localhost:44317/registerPharmacy";
+    pharmacyName: string = "Our Phamracy";
+
     constructor(private http: HttpClient, public service: PharmacyService) { }
 
-    postLogin(){
-        this.formHospitalRegistration.pharmacyName = this.service.formChoosePharmacy.pharmacyName;
+    registerHospital(){
         console.log(this.formHospitalRegistration);
-        return this.http.post(this.baseUrl,this.formHospitalRegistration);
+        return this.http.post(this.pharmacyBaseUrl,this.formHospitalRegistration);
     }
 
     registerPharmacy(){
-      this.formHospitalRegistration.pharmacyName = this.service.formChoosePharmacy.pharmacyName;
-      console.log(this.service.formChoosePharmacy.pharmacyName);
-      return this.http.post(this.baseUrl2, this.service.formChoosePharmacy);
+      return this.http.post(this.hospitalBaseUrl, this.service.formChoosePharmacy);
     }
   }
