@@ -10,6 +10,7 @@ export class PharmacyOffersComponent implements OnInit {
 
   offers: PharmacyOfferModel[] = [
     {
+      id: 1,
       title: 'Offer1',
       content: 'Offer content',
       startDate: '11.11.2021.',
