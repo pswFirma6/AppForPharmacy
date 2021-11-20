@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PharmacyOfferModel } from '../shared/pharmacyOffer.model';
+import { PharmacyOffersService } from '../shared/pharmacyOffers.service';
 
 @Component({
   selector: 'app-pharmacy-offers',
@@ -8,18 +9,14 @@ import { PharmacyOfferModel } from '../shared/pharmacyOffer.model';
 })
 export class PharmacyOffersComponent implements OnInit {
 
-  offers: PharmacyOfferModel[] = [
-    {
-      title: 'Offer1',
-      content: 'Offer content',
-      startDate: '11.11.2021.',
-      endDate: '30.11.2021'
-    }
-  ]
+  offers: PharmacyOfferModel[] = [];
 
-  constructor() { }
+  constructor(public service: PharmacyOffersService) { }
 
   ngOnInit(): void {
+    this.service.getOffers().subscribe(
+      res => this.offers = res
+    );
   }
 
 }
