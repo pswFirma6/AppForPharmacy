@@ -15,7 +15,7 @@ export class PharmacyOfferFormComponent implements OnInit {
   }
 
   onSubmit(form: NgForm){
-    this.service.addOffer().subscribe(
+    this.service.createOffer().subscribe(
         (res) => {
           console.log("Successfuly added to pharmacy base!");
         }

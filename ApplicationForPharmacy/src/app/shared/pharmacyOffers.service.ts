@@ -1,5 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
 import { PharmacyOfferModel } from "./pharmacyOffer.model";
 
 @Injectable({
@@ -8,14 +9,17 @@ import { PharmacyOfferModel } from "./pharmacyOffer.model";
 export class PharmacyOffersService {
 
     formCreatingNewOffer: PharmacyOfferModel = new PharmacyOfferModel();
-    readonly pharmacyBaseUrl = "https://localhost:44377/addOffer";
+    readonly addOfferUrl = "https://localhost:44377/addOffer";
+    readonly getOffersUrl = "https://localhost:44377/getOffers";
 
     constructor(private http: HttpClient) { }
 
-    addOffer(){
-      return this.http.post(this.pharmacyBaseUrl, this.formCreatingNewOffer);
+    createOffer(){
+      return this.http.post(this.addOfferUrl, this.formCreatingNewOffer);
     }
 
-    createOffer(){
+    getOffers() : Observable<PharmacyOfferModel[]>{
+      return this.http.get<PharmacyOfferModel[]>(this.getOffersUrl);
     }
+
   }

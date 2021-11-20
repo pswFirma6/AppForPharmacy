@@ -7,9 +7,9 @@
         <div class="card-body">
             <div class="form-control">
                 <label><b>Start date:</b></label><br/>
-                {{offer.startDate}}<br/><br/>
+                {{offer.startDate | date: 'dd/MM/yyyy'}}<br/><br/>
                 <label><b>End date:</b></label><br/>
-                {{offer.endDate}}<br/><br/>
+                {{offer.endDate | date: 'dd/MM/yyyy'}}<br/><br/>
                 <label><b>Content:</b></label><br/>
                 {{offer.content}}
             </div>
