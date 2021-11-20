@@ -1,0 +1,17 @@
+<div class="offer">
+
+    <button *ngIf="!newOffer" (click)="toggleCreateButton()" class="btnCreate">
+      {{buttonText}}
+    </button>
+    <button *ngIf="newOffer" (click)="toggleCreateButton()" class="btnCreate">
+      {{buttonText}}
+    </button>
+  
+    <div *ngIf="newOffer">
+      <app-pharmacy-offer-form></app-pharmacy-offer-form>
+    </div>
+    <div *ngIf="!newOffer">
+      <app-pharmacy-offers></app-pharmacy-offers>
+    </div>
+  
+  </div>
