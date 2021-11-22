@@ -14,6 +14,8 @@ import { PharmacyOfferFormComponent } from './pharmacy-offer-form/pharmacy-offer
 import { PharmacyOfferComponent } from './pharmacy-offer/pharmacy-offer.component';
 import { PharmacyOffersComponent } from './pharmacy-offers/pharmacy-offers.component';
 import { ConsumptionReportComponent } from './consumption-report/consumption-report.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { ConsumptionReportComponent } from './consumption-report/consumption-rep
       { path: '**', redirectTo: 'home', pathMatch: 'full' }
     ]),
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]
