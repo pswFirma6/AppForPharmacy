@@ -1,4 +1,7 @@
-import { Component } from "@angular/core";
+import { AfterViewInit, Component, OnInit } from "@angular/core";
+import { NotificationComponent } from "../notifications/notifications.component";
+import { NotificationsService } from "../notifications/notifications.service";
+import { NotificationsModel } from "../shared/notifications.model";
 
 @Component({
     selector: 'sidebar',
@@ -6,9 +9,17 @@ import { Component } from "@angular/core";
     styleUrls: ['./sidebar.component.css']
 })
 
-export class SidebarComponent {
+export class SidebarComponent implements OnInit{
 
+    notifications: NotificationsModel[] = []
+
+    exists: boolean = false;
     menuItems: any[] = [
+        {
+            path: '/notifications',
+            title: 'NOTIFICATIONS',
+            class:''
+        },
         {
             path: '/medications',
             title: 'MEDICATIONS',
@@ -31,6 +42,25 @@ export class SidebarComponent {
         }
     ]
   
-    constructor() { }
+    constructor(public service: NotificationsService) { }
+    ngOnInit(): void {
+        this.service.getNotifications().subscribe(
+            res =>{ this.notifications = res;
+            console.log(res);
+            this.exists = this.checkForNewNotifications()}
+          );
+    }
+  
+    checkForNewNotifications(): boolean{
+        for(let notification of this.notifications){
+            if (!notification.read){
+                return true;
+            }
+        }
+        return false;
+    }
+     
+
+    
 
 }
