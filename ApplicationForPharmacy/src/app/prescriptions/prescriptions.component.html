@@ -1,0 +1,19 @@
+<div class="card">
+    <app-navbar-reports></app-navbar-reports>
+    <div>
+
+
+            <div class="cards text-center" >
+                <div class="card-body" *ngFor='let prescription of prescriptions'>
+                    <div class="form-control">
+                        <label><b>File name:</b></label><br/>
+                        {{prescription.substring(85)}}<br/><br/>
+                        <button class="btn" (click)="OpenPdf(prescription)">Open pdf file</button>
+                        
+                    </div>
+
+                </div> 
+            <div> 
+
+    </div>       
+</div>
