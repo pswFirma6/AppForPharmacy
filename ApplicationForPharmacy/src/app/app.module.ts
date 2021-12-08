@@ -17,6 +17,8 @@ import { ConsumptionReportComponent } from './consumption-report/consumption-rep
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { NotificationComponent } from './notifications/notifications.component';
+import { PrescriptionsComponent } from './prescriptions/prescriptions.component';
+import { NavbarReportsComponent } from './navbar-reports/navbar-reports.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { NotificationComponent } from './notifications/notifications.component';
     PharmacyOfferComponent,
     PharmacyOffersComponent,
     ConsumptionReportComponent,
-    NotificationComponent
+    NotificationComponent,
+    PrescriptionsComponent,
+    NavbarReportsComponent
   ],
   imports: [
     BrowserModule,
@@ -39,8 +43,9 @@ import { NotificationComponent } from './notifications/notifications.component';
       { path: 'hospitalRegistration', component: HospitalRegistrationComponent },
       { path: 'medications', component: MedicationsComponent },
       { path: 'offers', component: PharmacyOfferComponent },
-      { path: 'report', component: ConsumptionReportComponent },
+      { path: 'consumptions', component: ConsumptionReportComponent },
       { path: 'notifications', component: NotificationComponent},
+      { path: 'prescriptions', component: PrescriptionsComponent},
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: '**', redirectTo: 'home', pathMatch: 'full' }
     ]),

@@ -36,8 +36,8 @@ export class SidebarComponent implements OnInit{
             class: ''
         },
         {
-            path: '/report',
-            title: 'CONSUMPTION REPORT',
+            path: '/prescriptions',
+            title: 'REPORTS',
             class: ''
         }
     ]
