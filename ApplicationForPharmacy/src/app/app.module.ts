@@ -43,7 +43,7 @@ import { NavbarReportsComponent } from './navbar-reports/navbar-reports.componen
       { path: 'hospitalRegistration', component: HospitalRegistrationComponent },
       { path: 'medications', component: MedicationsComponent },
       { path: 'offers', component: PharmacyOfferComponent },
-      { path: 'report', component: ConsumptionReportComponent },
+      { path: 'consumptions', component: ConsumptionReportComponent },
       { path: 'notifications', component: NotificationComponent},
       { path: 'prescriptions', component: PrescriptionsComponent},
       { path: '', redirectTo: 'home', pathMatch: 'full' },

@@ -1,13 +1,16 @@
-.btnCreate{
-    background-color: lightblue; 
-    color: black;
+.cards{
+    position: absolute;
+    margin-top: 70px;
+    width: 80%;
+    margin-left: 376px;
+    
+}
+
+.btn{
+    background-color: white; 
+    border-color: lightgray;
+    color: skyblue;
     font-size: x-large;
     font-weight: bold;
     opacity: 70%;
-    border-radius: 10px;
-    margin-top: -50px;
-    margin-left: 1000px;
-    border: 0px;
-    width: 300px;
-    height: 50px;
 }
