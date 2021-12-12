@@ -9,8 +9,8 @@ import { PharmacyService } from './pharmacy.service';
 export class HospitalRegistrationService {
 
     formHospitalRegistration: HospitalRegistrationModel = new HospitalRegistrationModel();
-    readonly pharmacyBaseUrl = "https://localhost:44377/registerHospital";
-    readonly hospitalBaseUrl = "https://localhost:44317/registerPharmacy";
+    readonly pharmacyBaseUrl = "http://localhost:44377/registerHospital";
+    readonly hospitalBaseUrl = "http://localhost:44317/registerPharmacy";
     pharmacyName: string = "Our Phamracy";
 
     constructor(private http: HttpClient, public service: PharmacyService) { }

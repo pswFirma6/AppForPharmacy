@@ -13,7 +13,7 @@ export class PharmacyService {
         pharmacyName : "Our Pharmacy",
         apiKey: "abcdefgh"
     };
-    readonly pharmacyBase = "https://localhost:44377/pharmacyNames";
+    readonly pharmacyBase = "http://localhost:44377/pharmacyNames";
     pharmacyNames: string[] = [];
     
     constructor(private http: HttpClient) {

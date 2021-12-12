@@ -9,8 +9,8 @@ import { PharmacyOfferModel } from "./pharmacyOffer.model";
 export class PharmacyOffersService {
 
     formCreatingNewOffer: PharmacyOfferModel = new PharmacyOfferModel();
-    readonly addOfferUrl = "https://localhost:44377/addOffer";
-    readonly getOffersUrl = "https://localhost:44377/getOffers";
+    readonly addOfferUrl = "http://localhost:44377/addOffer";
+    readonly getOffersUrl = "http://localhost:44377/getOffers";
 
     constructor(private http: HttpClient) { }
 

@@ -11,8 +11,8 @@ export class ReportsService {
 
     constructor(private http: HttpClient) {
     }
-    readonly url = "https://localhost:44377/prescriptions";
-    readonly prescriptionsUr = "https://localhost:44377/getPdf/";
+    readonly url = "http://localhost:44377/prescriptions";
+    readonly prescriptionsUr = "http://localhost:44377/getPdf/";
 
     getPrescriptionFileNames() {
         return this.http.get<string[]>(this.url);

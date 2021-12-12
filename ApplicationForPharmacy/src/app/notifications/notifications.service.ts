@@ -14,9 +14,9 @@ export class NotificationsService{
   }
 
   newNotification: NotificationsModel = new NotificationsModel;
-  readonly newNotificationURL = "https://localhost:44377/newNotification";
-  readonly getNotificationsURL = "https://localhost:44377/allNotifications";
-  readonly readNotificationURL = "https://localhost:44377/readNotification";
+  readonly newNotificationURL = "http://localhost:44377/newNotification";
+  readonly getNotificationsURL = "http://localhost:44377/allNotifications";
+  readonly readNotificationURL = "http://localhost:44377/readNotification";
 
   saveNotification(){
     return this.http.post<NotificationsModel>(this.newNotificationURL, this.newNotification);
