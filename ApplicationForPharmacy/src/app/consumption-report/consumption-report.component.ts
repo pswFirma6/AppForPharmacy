@@ -24,13 +24,18 @@ export class ConsumptionReportComponent implements OnInit {
     this.service.downloadReport()
     .subscribe(
       (res:any) => {this.notificationService.newNotification.fileName = res.name;
-      Swal.fire('New file', 'You have new consumption!', 'info');
-      this.setNotification();
-      this.notificationService.saveNotification().subscribe(
-        (res:any) => {
-          location.reload();
+      Swal.fire('New file', 'You have new consumption!', 'info')
+      .then((result) => {
+        if(result.isConfirmed){
+          this.setNotification();
+          this.notificationService.saveNotification().subscribe(
+            (res:any) => {
+              location.reload();
+            }
+          );
         }
-      );}
+      });
+     }
     );
 
 
