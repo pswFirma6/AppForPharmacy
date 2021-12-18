@@ -19,6 +19,9 @@ import { ToastrModule } from 'ngx-toastr';
 import { NotificationComponent } from './notifications/notifications.component';
 import { PrescriptionsComponent } from './prescriptions/prescriptions.component';
 import { NavbarReportsComponent } from './navbar-reports/navbar-reports.component';
+import { TenderComponent } from './tender/tender.component';
+import { TendersComponent } from './tenders/tenders.component';
+
 
 @NgModule({
   declarations: [
@@ -34,7 +37,9 @@ import { NavbarReportsComponent } from './navbar-reports/navbar-reports.componen
     ConsumptionReportComponent,
     NotificationComponent,
     PrescriptionsComponent,
-    NavbarReportsComponent
+    NavbarReportsComponent,
+    TenderComponent,
+    TendersComponent
   ],
   imports: [
     BrowserModule,
@@ -46,6 +51,7 @@ import { NavbarReportsComponent } from './navbar-reports/navbar-reports.componen
       { path: 'consumptions', component: ConsumptionReportComponent },
       { path: 'notifications', component: NotificationComponent},
       { path: 'prescriptions', component: PrescriptionsComponent},
+      { path: 'tenders', component: TenderComponent},
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: '**', redirectTo: 'home', pathMatch: 'full' }
     ]),

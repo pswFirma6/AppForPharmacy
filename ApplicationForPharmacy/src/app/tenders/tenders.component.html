@@ -1,0 +1,25 @@
+<div class="cards">
+
+    <div class="card text-center" *ngFor='let tender of tenders'>
+        <div class="card-header">
+            <b>HOSPITAL TENDER</b>
+        </div>
+        <div class="card-body">
+            <div class="form-control">
+                <label><b>Start date:</b></label><br/>
+                {{tender.startDate}}<br/><br/>
+                <label><b>End date:</b></label><br/>
+                {{tender.endDate}}<br/><br/>
+                <label><b>Tender items:</b></label><br/>
+                <div *ngFor='let item of tender.tenderItems' style="margin-left: 20px;">
+                    * {{item.name}}: {{item.quantity}}<br/>
+                </div>
+            </div>
+
+        </div> 
+        <div>
+        
+    </div>
+    
+
+</div>
