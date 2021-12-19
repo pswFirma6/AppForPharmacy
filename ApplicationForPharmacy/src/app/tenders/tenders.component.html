@@ -1,0 +1,80 @@
+<div class="cards">
+
+    <div class="card text-center" *ngFor='let tender of tenders'>
+        <div class="card-header">
+            <b>HOSPITAL TENDER</b>
+        </div>
+        <div class="card-body">
+            <div class="form-control">
+                <label><b>Start date:</b></label><br/>
+                {{tender.startDate}}<br/><br/>
+                <label><b>End date:</b></label><br/>
+                {{tender.endDate}}<br/><br/>
+                <label><b>Tender items:</b></label><br/>
+                <div *ngFor='let item of tender.tenderItems' style="margin-left: 20px;">
+                    * {{item.name}}: {{item.quantity}}<br/>
+                </div>
+            </div>
+            <a *ngIf="!checkTenderOffer(tender.id) && checkEdingOffer()" class="text-muted" (click)="changeOfferFormVisibility(tender.id)">
+                Make offer
+            </a>
+            <a *ngIf="checkTenderOffer(tender.id)" class="text-muted" (click)="changeOfferVisibility(tender.id)">
+                See offer
+            </a>
+
+        </div> 
+    <div *ngIf="offerFormVisibility[tender.id]==true">
+        <div class="card-header1">
+            <b>Offer</b>
+        </div>
+        <div class="card-body">
+            <div class="form-control">
+                <label><b>Offer items:</b></label><br/>
+                <div *ngFor='let item of tender.tenderItems; let i = index' style="margin-left: 20px;">
+                    * {{item.name}}: <br/>
+                    <div class="offerItems">
+                        - quantity: 
+                        <input class="form-control-input" type="number" min="0" step="1" [(ngModel)]="offerItemsQuantities[i]"/> <br/>
+                        - price: 
+                        <input class="form-control-input" type="number" min="0" [(ngModel)]="offerItemsPrices[i]"/>
+                    </div><br/>
+                </div>
+                <button *ngIf="!availableForOffer || tender.id!=offer.tenderId" class="btn" (click)="checkAvailability(tender.id)">
+                    Check medicine availability
+                </button>
+                <button *ngIf="!availableForOffer || tender.id!=offer.tenderId" class="btn" (click)="changeOfferFormVisibility(tender.id)">
+                    Cancel
+                </button>
+                <button *ngIf="availableForOffer && tender.id==offer.tenderId" class="btn" (click)="postTenderOffer()">
+                    Post offer
+                </button>
+                <button *ngIf="availableForOffer && tender.id==offer.tenderId" class="btn" (click)="changeOfferFormVisibility(tender.id)">
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <div *ngIf="checkTenderOfferVisibility(tender.id)">
+        <div class="card-header1">
+            <b>Offer</b>
+        </div>
+        <div class="card-body">
+            <div class="form-control">
+                <label><b>Posting date:</b></label><br/>
+                {{shownOffer.postingDate}}<br/><br/>
+                <label><b>Offer items:</b></label><br/>
+                <div *ngFor='let item of shownOffer.offerItems' style="margin-left: 20px;">
+                    * {{item.name}}: <br/>
+                    <div class="offerItems">
+                        - quantity: {{item.quantity}}<br/>
+                        - price: {{item.price}}
+                    </div><br/>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+</div>
