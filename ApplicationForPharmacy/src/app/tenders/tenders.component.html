@@ -15,10 +15,59 @@
                     * {{item.name}}: {{item.quantity}}<br/>
                 </div>
             </div>
+            <a *ngIf="!checkTenderOffer(tender.id)" class="text-muted" (click)="changeOfferFormVisibility(tender.id)">
+                Make offer
+            </a>
+            <a *ngIf="checkTenderOffer(tender.id)" class="text-muted" (click)="changeOfferVisibility(tender.id)">
+                See offer
+            </a>
 
         </div> 
-        <div>
-        
+    <div *ngIf="offerFormVisibility[tender.id]==true">
+        <div class="card-header1">
+            <b>Offer</b>
+        </div>
+        <div class="card-body">
+            <div class="form-control">
+                <label><b>Offer items:</b></label><br/>
+                <div *ngFor='let item of tender.tenderItems; let i = index' style="margin-left: 20px;">
+                    * {{item.name}}: <br/>
+                    <div class="offerItems">
+                        - quantity: 
+                        <input class="form-control-input" type="number" min="0" step="1" [(ngModel)]="offerItemsQuantities[i]"/> <br/>
+                        - price: 
+                        <input class="form-control-input" type="number" min="0" [(ngModel)]="offerItemsPrices[i]"/>
+                    </div><br/>
+                </div>
+                <button *ngIf="!availableForOffer" class="btn" (click)="checkAvailability()">
+                    Check medicine availability
+                </button>
+                <button *ngIf="availableForOffer" class="btn" (click)="postTenderOffer()">
+                    Post offer
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <div *ngIf="checkTenderOfferVisibility(tender.id)">
+        <div class="card-header1">
+            <b>Offer</b>
+        </div>
+        <div class="card-body">
+            <div class="form-control">
+                <label><b>Posting date:</b></label><br/>
+                {{shownOffer.postingDate}}<br/><br/>
+                <label><b>Offer items:</b></label><br/>
+                <div *ngFor='let item of shownOffer.offerItems' style="margin-left: 20px;">
+                    * {{item.name}}: <br/>
+                    <div class="offerItems">
+                        - quantity: {{item.quantity}}<br/>
+                        - price: {{item.price}}
+                    </div><br/>
+                </div>
+            </div>
+        </div>
     </div>
     
 

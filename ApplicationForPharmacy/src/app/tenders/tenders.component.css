@@ -35,10 +35,33 @@ h1{
     font-size: large;
 }
 
+.offerItems{
+    margin-left: 5%;
+}
+
+.form-control-input{
+    height: 5%;
+    width: 10%;
+    border-radius: 5px;
+    border-width: 1px;
+    border-color: lightgray;
+    margin-left: 1%;
+    margin-top: 1%;
+}
+
 label{
     font-size: large;
 }
 
 a:hover{
     cursor: pointer;
+}
+
+.btn{
+    background-color: lightblue; 
+    color: black;
+    font-size: large;
+    font-weight: bold;
+    opacity: 70%;
+    margin-left: 35%;
 }
