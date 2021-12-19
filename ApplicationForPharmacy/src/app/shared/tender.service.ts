@@ -22,6 +22,10 @@ export class TenderService {
                 {
                     "name": "Aspirin",
                     "quantity": 10
+                },
+                {
+                    "name": "Hemoglobin",
+                    "quantity": 10
                 }
             ]
         },

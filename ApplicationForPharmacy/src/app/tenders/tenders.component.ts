@@ -21,6 +21,8 @@ export class TendersComponent implements OnInit {
   offerItemsQuantities: number[] = [];
   offerItemsPrices: number[] = [];
   offerItems: OfferItemModel[] = [];
+  offer: TenderOfferModel = new TenderOfferModel;
+  newOffers: TenderOfferModel[] = [];
 
   constructor(public service: TenderService, public offerService: TenderOfferService) { }
 
@@ -35,6 +37,13 @@ export class TendersComponent implements OnInit {
     for(let offer of this.offerVisibility){
       offer = false;
     }
+    /*for(let i=0; i<this.tenders.length; i++){
+      this.newOffers[i].tenderId = this.tenders[i].id;
+      this.newOffers[i].offerItems.length = this.tenders[i].tenderItems.length;
+      for(let j=0; j<this.tenders[i].tenderItems.length; j++){
+        this.newOffers[i].offerItems[j].name = this.tenders[i].tenderItems[j].name;
+      }
+    }*/
   }
 
   checkTenderOffer(tenderId: number): boolean{
@@ -64,8 +73,18 @@ export class TendersComponent implements OnInit {
         }
         this.offerItemsQuantities.length = tender.tenderItems.length;
         this.offerItemsPrices.length = tender.tenderItems.length;
+        //this.offerItems.length = tender.tenderItems.length;
       }
     }
+  }
+
+  checkEdingOffer(): boolean{
+    for(let offer of this.offerFormVisibility){
+      if(offer == true){
+        return false;
+      }
+    }
+    return true;
   }
 
   changeOfferVisibility(tenderId: number): void {
@@ -77,7 +96,7 @@ export class TendersComponent implements OnInit {
     }
   }
 
-  checkAvailability(){
+  checkAvailability(tenderId: number){
     for(let i=0; i < this.offerItemsNames.length; i++){
       let offerItem = new OfferItemModel;
       offerItem.name = this.offerItemsNames[i];
@@ -87,6 +106,7 @@ export class TendersComponent implements OnInit {
     }
     console.log(this.offerItems);
     this.availableForOffer = true;
+    this.offer.tenderId = tenderId;
     /*return this.service.checkMedicine(this.availability).subscribe(
       (res:any) => {this.availableForOffer = res; 
       if(!this.availableForOffer){
