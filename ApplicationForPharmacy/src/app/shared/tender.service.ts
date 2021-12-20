@@ -47,7 +47,13 @@ export class TenderService {
         }
     ]
 
+    readonly getTendersUrl = "http://localhost:44377/getTenders";
+
     constructor(private http: HttpClient) { }
+
+    getTenders() : Observable<TenderModel[]>{
+        return this.http.get<TenderModel[]>(this.getTendersUrl);
+    }
 
 
   }

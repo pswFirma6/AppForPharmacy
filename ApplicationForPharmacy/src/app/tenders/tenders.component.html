@@ -15,7 +15,7 @@
                     * {{item.name}}: {{item.quantity}}<br/>
                 </div>
             </div>
-            <a *ngIf="!checkTenderOffer(tender.id) && checkEdingOffer()" class="text-muted" (click)="changeOfferFormVisibility(tender.id)">
+            <a *ngIf="!checkTenderOffer(tender.id) && checkEditingOffer()" class="text-muted" (click)="changeOfferFormVisibility(tender.id)">
                 Make offer
             </a>
             <a *ngIf="checkTenderOffer(tender.id)" class="text-muted" (click)="changeOfferVisibility(tender.id)">
@@ -39,18 +39,20 @@
                         <input class="form-control-input" type="number" min="0" [(ngModel)]="offerItemsPrices[i]"/>
                     </div><br/>
                 </div>
+                <button *ngIf="!availableForOffer || tender.id!=offer.tenderId" class="btn" (click)="changeOfferFormVisibility(tender.id)">
+                    Cancel
+                </button>
                 <button *ngIf="!availableForOffer || tender.id!=offer.tenderId" class="btn" (click)="checkAvailability(tender.id)">
                     Check medicine availability
                 </button>
-                <button *ngIf="!availableForOffer || tender.id!=offer.tenderId" class="btn" (click)="changeOfferFormVisibility(tender.id)">
+                
+                <button *ngIf="availableForOffer && tender.id==offer.tenderId" class="btn" (click)="changeOfferFormVisibility(tender.id)">
                     Cancel
                 </button>
                 <button *ngIf="availableForOffer && tender.id==offer.tenderId" class="btn" (click)="postTenderOffer()">
                     Post offer
                 </button>
-                <button *ngIf="availableForOffer && tender.id==offer.tenderId" class="btn" (click)="changeOfferFormVisibility(tender.id)">
-                    Cancel
-                </button>
+                
             </div>
         </div>
     </div>
@@ -62,10 +64,8 @@
         </div>
         <div class="card-body">
             <div class="form-control">
-                <label><b>Posting date:</b></label><br/>
-                {{shownOffer.postingDate}}<br/><br/>
                 <label><b>Offer items:</b></label><br/>
-                <div *ngFor='let item of shownOffer.offerItems' style="margin-left: 20px;">
+                <div *ngFor='let item of shownOffer.tenderOfferItems' style="margin-left: 20px;">
                     * {{item.name}}: <br/>
                     <div class="offerItems">
                         - quantity: {{item.quantity}}<br/>
