@@ -27,8 +27,13 @@ export class TendersComponent implements OnInit {
   constructor(public service: TenderService, public offerService: TenderOfferService) { }
 
   ngOnInit(): void {
-    this.tenders = this.service.tenders;
-    this.offers = this.offerService.offers;
+    this.service.getTenders().subscribe(
+      (res:any) => this.tenders = res
+    );
+    //this.offers = this.offerService.offers;
+    this.offerService.getTenderOffers().subscribe(
+      (res:any) => this.offers = res
+    );
     this.offerFormVisibility.length = this.tenders.length;
     this.offerVisibility.length = this.offers.length;
     for(let offerForm of this.offerFormVisibility){
@@ -37,13 +42,6 @@ export class TendersComponent implements OnInit {
     for(let offer of this.offerVisibility){
       offer = false;
     }
-    /*for(let i=0; i<this.tenders.length; i++){
-      this.newOffers[i].tenderId = this.tenders[i].id;
-      this.newOffers[i].offerItems.length = this.tenders[i].tenderItems.length;
-      for(let j=0; j<this.tenders[i].tenderItems.length; j++){
-        this.newOffers[i].offerItems[j].name = this.tenders[i].tenderItems[j].name;
-      }
-    }*/
   }
 
   checkTenderOffer(tenderId: number): boolean{
@@ -73,12 +71,11 @@ export class TendersComponent implements OnInit {
         }
         this.offerItemsQuantities.length = tender.tenderItems.length;
         this.offerItemsPrices.length = tender.tenderItems.length;
-        //this.offerItems.length = tender.tenderItems.length;
       }
     }
   }
 
-  checkEdingOffer(): boolean{
+  checkEditingOffer(): boolean{
     for(let offer of this.offerFormVisibility){
       if(offer == true){
         return false;
@@ -104,19 +101,26 @@ export class TendersComponent implements OnInit {
       offerItem.price = this.offerItemsPrices[i];
       this.offerItems.push(offerItem);
     }
-    console.log(this.offerItems);
-    this.availableForOffer = true;
-    this.offer.tenderId = tenderId;
-    /*return this.service.checkMedicine(this.availability).subscribe(
-      (res:any) => {this.availableForOffer = res; 
-      if(!this.availableForOffer){
-        window.alert("Your pharmacy doesn't have enought resources for this offer!");
-      }}
-    );*/
+    this.offerService.checkMedicinesForTenderOffer(this.offerItems).subscribe(
+      (res:any) => {
+        if(res == true){
+          this.availableForOffer = res;
+          this.offer.tenderId = tenderId;
+          this.offer.tenderOfferItems = this.offerItems;
+        } else {
+          window.alert("We don't have enough items for this offer!")
+        }
+        
+      }
+    );
   }
 
   postTenderOffer(){
-
+    this.offerService.postTenderOffer(this.offer).subscribe(
+      (res:any) => {
+        window.alert("Your offer is successfully posted!");
+      }
+    );
   }
 
 }
