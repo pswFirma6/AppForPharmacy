@@ -23,7 +23,7 @@ export class ConsumptionReportComponent implements OnInit {
 
     this.service.downloadReport()
     .subscribe(
-      (res:any) => {this.notificationService.newNotification.fileName = res.name;
+      (res:any) => {this.notificationService.newNotification.name = res.name;
       Swal.fire('New file', 'You have new consumption!', 'info')
       .then((result) => {
         if(result.isConfirmed){

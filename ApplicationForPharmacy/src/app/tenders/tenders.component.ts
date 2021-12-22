@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import Swal from 'sweetalert2';
 import { TenderModel } from '../shared/tender.model';
 import { TenderService } from '../shared/tender.service';
 import { TenderOfferService } from '../shared/tenderOffer.service';
@@ -118,7 +119,10 @@ export class TendersComponent implements OnInit {
   postTenderOffer(){
     this.offerService.postTenderOffer(this.offer).subscribe(
       (res:any) => {
-        window.alert("Your offer is successfully posted!");
+        Swal.fire("Your offer is successfully posted!","","success").then((result)=>
+        {
+          location.reload();
+        });
       }
     );
   }

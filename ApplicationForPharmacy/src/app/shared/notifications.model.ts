@@ -3,6 +3,6 @@ export class NotificationsModel{
     title: string = '';
     content: string = '';
     date: Date = new Date;
-    fileName: string = '';
+    name: string = '';
     read: boolean = false;
 }
