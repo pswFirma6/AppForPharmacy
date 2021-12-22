@@ -9,41 +9,6 @@ import { OfferItemModel, TenderOfferModel } from "./tenderOffers.model";
   })
 export class TenderOfferService {
 
-    /*offers : TenderOfferModel [] = [
-        {
-            "id" : 1,
-            "offerItems" : [
-                {
-                    "name": "Brufen",
-                    "quantity": 10,
-                    "price": 200
-                },
-                {
-                    "name": "Aspirin",
-                    "quantity": 10,
-                    "price": 500
-                }
-            ],
-            "tenderId": 1
-        },
-        {
-            "id" : 1,
-            "offerItems" : [
-                {
-                    "name": "Brufen",
-                    "quantity": 20,
-                    "price": 200
-                },
-                {
-                    "name": "Aspirin",
-                    "quantity": 10,
-                    "price": 500
-                }
-            ],
-            "tenderId": 3
-        }
-    ]*/
-
     readonly getTenderOffersUrl = "http://localhost:44377/getTenderOffers";
     readonly checkMedicinesUrl = "http://localhost:44377/checkOfferItemsAvailability";
     readonly postTenderOfferUrl = "http://localhost:44377/postTenderOffer";

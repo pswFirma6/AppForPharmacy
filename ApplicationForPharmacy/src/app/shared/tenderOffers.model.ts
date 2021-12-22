@@ -3,8 +3,8 @@ export class TenderOfferModel {
     tenderId: number = 0;
     pharmacyName: string = "";
     tenderOfferItems : OfferItemModel[] = [];
-    hospitalApiKey: string = '';
-    hospitalTenderId: number = 0;
+    hospitalApiKey : string = "";
+    creationDate : string = "";
 }
 
 export class OfferItemModel {
