@@ -15,7 +15,7 @@ export class TendersComponent implements OnInit {
   offers: TenderOfferModel[] = [];
   offerFormVisibility: boolean[] = [];
   offerVisibility: boolean[] = [];
-  shownOffer: TenderOfferModel = new TenderOfferModel;
+  shownOffers: TenderOfferModel[] = [];
   availableForOffer: boolean = false;
   offerItemsNames: string[] = [];
   offerItemsQuantities: number[] = [];
@@ -30,10 +30,10 @@ export class TendersComponent implements OnInit {
     this.service.getTenders().subscribe(
       (res:any) => this.tenders = res
     );
-    //this.offers = this.offerService.offers;
     this.offerService.getTenderOffers().subscribe(
       (res:any) => this.offers = res
     );
+    console.log(this.offers);
     this.offerFormVisibility.length = this.tenders.length;
     this.offerVisibility.length = this.offers.length;
     for(let offerForm of this.offerFormVisibility){
@@ -44,7 +44,20 @@ export class TendersComponent implements OnInit {
     }
   }
 
-  checkTenderOffer(tenderId: number): boolean{
+  checkTenderOfferMaking(tenderId: number): boolean{ 
+    for(let offer of this.offers){
+      if(offer.tenderId == tenderId){
+        let offerDate = new Date(offer.creationDate);
+        let todayDate = new Date();
+        if(offerDate.getDate() == todayDate.getDate() && offerDate.getMonth() == todayDate.getMonth() && offerDate.getFullYear() == todayDate.getFullYear()){
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+
+  checkTenderOfferDisplay(tenderId: number){
     for(let offer of this.offers){
       if(offer.tenderId == tenderId){
         return true;
@@ -85,10 +98,11 @@ export class TendersComponent implements OnInit {
   }
 
   changeOfferVisibility(tenderId: number): void {
+    this.shownOffers = [];
     for(let offer of this.offers){
       if(offer.tenderId == tenderId){
         this.offerVisibility[offer.id] = !this.offerVisibility[offer.id];
-        this.shownOffer = offer;
+        this.shownOffers.push(offer);
       }
     }
   }
@@ -110,7 +124,6 @@ export class TendersComponent implements OnInit {
         } else {
           window.alert("We don't have enough items for this offer!")
         }
-        
       }
     );
   }
@@ -119,6 +132,7 @@ export class TendersComponent implements OnInit {
     this.offerService.postTenderOffer(this.offer).subscribe(
       (res:any) => {
         window.alert("Your offer is successfully posted!");
+        window.location.reload();
       }
     );
   }
