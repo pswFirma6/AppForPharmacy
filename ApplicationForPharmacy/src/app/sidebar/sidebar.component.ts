@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, OnInit } from "@angular/core";
+import Swal from "sweetalert2";
 import { NotificationComponent } from "../notifications/notifications.component";
 import { NotificationsService } from "../notifications/notifications.service";
 import { NotificationsModel } from "../shared/notifications.model";
@@ -59,6 +60,9 @@ export class SidebarComponent implements OnInit{
     checkForNewNotifications(): boolean{
         for(let notification of this.notifications){
             if (!notification.read){
+                if(!notification.name.includes(".txt")){
+                    Swal.fire('Tender results', 'Tender results have been announced!', 'info');
+                }
                 return true;
             }
         }

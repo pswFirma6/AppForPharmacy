@@ -12,6 +12,7 @@ import { NotificationsService } from "./notifications.service";
 export class NotificationComponent implements OnInit{
 
     notifications: NotificationsModel[] = []
+    pharmacyName: string = "";
 
     constructor(public service: NotificationsService) { }
 
@@ -22,6 +23,10 @@ export class NotificationComponent implements OnInit{
             console.log(res);
             }
           );
+        this.service.getPharmacyName().subscribe(
+            res =>{this.pharmacyName = res[0]
+            console.log()}
+        )
     }
 
     
