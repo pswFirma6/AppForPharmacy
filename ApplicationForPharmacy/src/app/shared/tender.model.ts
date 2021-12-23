@@ -4,6 +4,8 @@ export class TenderModel {
     startDate: string = "";
     endDate: string = "";
     tenderItems : TenderItemsModel[] = [];
+    hospitalApiKey : string = "";
+    hospitalTenderId : number = 0;
 }
 
 export class TenderItemsModel {
