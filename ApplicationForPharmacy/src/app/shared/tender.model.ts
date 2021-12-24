@@ -6,6 +6,8 @@ export class TenderModel {
     tenderItems : TenderItemsModel[] = [];
     hospitalApiKey : string = "";
     hospitalTenderId : number = 0;
+    opened: boolean = false;
+    
 }
 
 export class TenderItemsModel {
