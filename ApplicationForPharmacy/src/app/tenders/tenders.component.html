@@ -1,6 +1,8 @@
 <div class="cards">
+    <div *ngFor='let tender of tenders' >
 
-    <div class="card text-center" *ngFor='let tender of tenders'>
+    <div class="card text-center" *ngIf='tender.opened'>
+
         <div class="card-header">
             <b>HOSPITAL TENDER</b>
         </div>
@@ -8,21 +10,23 @@
             <div class="form-control">
                 <label><b>Start date:</b></label><br/>
                 {{tender.startDate}}<br/><br/>
+                <div *ngIf='tender.endDate != this.oldDate'>
                 <label><b>End date:</b></label><br/>
                 {{tender.endDate}}<br/><br/>
+                </div>
                 <label><b>Tender items:</b></label><br/>
                 <div *ngFor='let item of tender.tenderItems' style="margin-left: 20px;">
                     * {{item.name}}: {{item.quantity}}<br/>
                 </div>
             </div>
-            <a *ngIf="checkTenderOfferMaking(tender.id) && checkEditingOffer()" class="text-muted" (click)="changeOfferFormVisibility(tender.id)">
+            <a *ngIf="checkTenderOfferMaking(tender.id) && checkEditingOffer() && checkIfDateIsValid(tender.startDate, tender.endDate)" class="text-muted" (click)="changeOfferFormVisibility(tender.id)">
                 Make offer
             </a><br/>
             <a *ngIf="checkTenderOfferDisplay(tender.id)" class="text-muted" (click)="changeOfferVisibility(tender.id)">
                 See offers
             </a>
 
-        </div> 
+    </div> 
     <div *ngIf="offerFormVisibility[tender.id]==true">
         <div class="card-header1">
             <b>Offer</b>
@@ -79,6 +83,10 @@
             </div>
         </div>
     </div>
+    </div>
+</div>
+
+    
     
 
 </div>

@@ -13,6 +13,7 @@ import { OfferItemModel, TenderOfferModel } from '../shared/tenderOffers.model';
 export class TendersComponent implements OnInit {
 
   tenders: TenderModel[] = [];
+  activeTenders: TenderModel[] = [];
   offers: TenderOfferModel[] = [];
   offerFormVisibility: boolean[] = [];
   offerVisibility: boolean[] = [];
@@ -24,17 +25,18 @@ export class TendersComponent implements OnInit {
   offerItems: OfferItemModel[] = [];
   offer: TenderOfferModel = new TenderOfferModel;
   newOffers: TenderOfferModel[] = [];
+  oldDate: string = '1/1/2050 12:00:00 AM'
 
   constructor(public service: TenderService, public offerService: TenderOfferService) { }
 
   ngOnInit(): void {
     this.service.getTenders().subscribe(
-      (res:any) => this.tenders = res
+      (res:any) => {this.tenders = res
+      }
     );
     this.offerService.getTenderOffers().subscribe(
       (res:any) => this.offers = res
     );
-    console.log(this.offers);
     this.offerFormVisibility.length = this.tenders.length;
     this.offerVisibility.length = this.offers.length;
     for(let offerForm of this.offerFormVisibility){
@@ -138,6 +140,16 @@ export class TendersComponent implements OnInit {
         });
       }
     );
+  }
+
+  checkIfDateIsValid(start:string, end:string){
+    var today = new Date()
+    var startDate = new Date(start)
+    var endDate = new Date(end)
+    if(startDate <= today && today <= endDate){
+      return true
+    }
+    return false
   }
 
 }
