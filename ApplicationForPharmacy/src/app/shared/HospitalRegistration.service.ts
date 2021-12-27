@@ -20,7 +20,7 @@ export class HospitalRegistrationService {
         return this.http.post(this.pharmacyBaseUrl,this.formHospitalRegistration);
     }
 
-    registerPharmacy(){
+    /*registerPharmacy(){
       return this.http.post(this.hospitalBaseUrl, this.service.formChoosePharmacy);
-    }
+    }*/
   }

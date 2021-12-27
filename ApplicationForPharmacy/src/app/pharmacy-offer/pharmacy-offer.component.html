@@ -1,9 +1,9 @@
 <div class="offer">
 
-    <button *ngIf="!newOffer" (click)="toggleCreateButton()" class="btnCreate">
+    <button *ngIf="!newOffer" id="createButton" (click)="toggleCreateButton()" class="btnCreate">
       {{buttonText}}
     </button>
-    <button *ngIf="newOffer" (click)="toggleCreateButton()" class="btnCreate">
+    <button *ngIf="newOffer" id="showButton" (click)="toggleCreateButton()" class="btnCreate">
       {{buttonText}}
     </button>
   

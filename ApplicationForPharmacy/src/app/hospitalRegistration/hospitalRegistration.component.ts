@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { NgForm } from "@angular/forms";
+import { Router } from "@angular/router";
 import { HospitalRegistrationService } from "../shared/HospitalRegistration.service";
 
 @Component({
@@ -21,14 +22,14 @@ export class HospitalRegistrationComponent implements OnInit{
         this.service.registerHospital().subscribe(
           (res) => {
             console.log("Successfuly registered hospital to database");
-            
+            location.reload();
           }
         )
-        this.service.registerPharmacy().subscribe(
+        /*this.service.registerPharmacy().subscribe(
             (res) => {
                 console.log("Successfuly registered pharmacy to database");
             }
-        );
+        );*/
     }
 
     title: string = "Hospital Registration";

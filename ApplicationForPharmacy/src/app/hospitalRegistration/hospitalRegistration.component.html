@@ -5,24 +5,24 @@
             <b>{{title}}</b>
         </div>
         <div class="card-body"><br/>
-            <form #form = "ngForm" (submit) = "onSubmit(form)">
+            <form #form = "ngForm" (submit) = "onSubmit(form)" ngNativeValidate>
                 <div class="form-group">
                     <label>Hospital name:</label>
-                    <input class="form-control" type="text" name="Name" #Name="ngModel" [(ngModel)]="service.formHospitalRegistration.hospitalName"/>
+                    <input class="form-control" id="hospitalName" type="text" name="Name" #Name="ngModel" [(ngModel)]="service.formHospitalRegistration.hospitalName" required/>
                 </div><br/>
                 <div class="form-group">
                     <label for="exampleFormControlTextarea1">Hospital address:</label>
-                    <input class="form-control" type="text" name="Address" #Name="ngModel" [(ngModel)]="service.formHospitalRegistration.hospitalAddress"/>
+                    <input class="form-control" type="text" id="hospitalAddress" name="Address" #Name="ngModel" [(ngModel)]="service.formHospitalRegistration.hospitalAddress" required/>
                 </div><br/>
                 <div class="form-group">
                     <label for="exampleFormControlTextarea1">Hospital city:</label>
-                    <select class="form-control" id="hospitalCity" name="hospitalCity" #Name="ngModel" [(ngModel)] = "service.formHospitalRegistration.hospitalCity">
+                    <select class="form-control" id="hospitalCity" name="hospitalCity" #Name="ngModel" [(ngModel)] = "service.formHospitalRegistration.hospitalCity" required>
                         <option *ngFor='let city of cities'>
                           {{city.name}}
                         </option>
                       </select>
                 </div><br/><br/>
-                <button type="submit" class="btn">
+                <button type="submit" id="addHospital" class="btn">
                     Submit
                 </button>
               </form>
