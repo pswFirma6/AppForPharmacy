@@ -1,0 +1,27 @@
+<div class="registration">
+  
+    <div class="card text-center">
+        <div class="card-header">
+            <b>Choose Pharmacy</b>
+        </div>
+        <div class="card-body"><br/>
+            <form #form = "ngForm">
+              <div class="form-group">
+                    <label>Pharmacy Name:</label>
+                    <select class="form-control" id="pharmacyName" name="pharmacyName" #Name="ngModel" [(ngModel)] = "service.formChoosePharmacy.pharmacyName">
+                      <option *ngFor='let pharmacy of pharmacies'>
+                        {{pharmacy}}
+                      </option>
+                    </select>
+
+              </div><br/><br/>
+              <button type="submit" class="btn" [routerLink]="['/home']">
+                  Submit
+              </button>
+              </form>
+        </div>
+    </div>  
+  
+  </div>
+  
+  

@@ -1,0 +1,23 @@
+<div class="cards">
+
+    <div class="card text-center" *ngFor='let offer of offers'>
+        <div class="card-header">
+            <b>{{offer.title}}</b>
+        </div>
+        <div class="card-body">
+            <div class="form-control">
+                <label><b>Start date:</b></label><br/>
+                {{offer.startDate | date: 'dd/MM/yyyy'}}<br/><br/>
+                <label><b>End date:</b></label><br/>
+                {{offer.endDate | date: 'dd/MM/yyyy'}}<br/><br/>
+                <label><b>Content:</b></label><br/>
+                {{offer.content}}
+            </div>
+
+        </div> 
+        <div>
+        
+    </div>
+    
+
+</div>

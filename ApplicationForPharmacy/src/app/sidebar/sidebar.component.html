@@ -1,0 +1,25 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+
+<div class="wrapper">
+
+    <div class="logo">
+        <a href="#" class="simple-text">
+            PHARMACY
+        </a>
+    </div>
+
+    <ul class="nav resposive-nav">
+        <div>
+            <li routerLinkActive="active" *ngFor="let menuItem of menuItems">
+                <div class="navElement">
+                    <a [routerLink]="[menuItem.path]">
+                        <p *ngIf = 'menuItem.title != "NOTIFICATIONS"'>{{menuItem.title}}</p>
+                        <p *ngIf = 'menuItem.title == "NOTIFICATIONS" && !this.exists'>{{menuItem.title}}</p>
+                        <p *ngIf = 'menuItem.title == "NOTIFICATIONS" && this.exists'>{{menuItem.title}} <i class="far fa-bell"></i></p>
+                    </a>
+                </div>
+            </li>
+        </div>
+    </ul>
+    
+</div>
