@@ -12,6 +12,8 @@ import { NotificationsService } from "./notifications.service";
 export class NotificationComponent implements OnInit{
 
     notifications: NotificationsModel[] = []
+    readNotifications: NotificationsModel[] = []
+    unreadNotifications: NotificationsModel[] = []
     pharmacyName: string = "";
 
     constructor(public service: NotificationsService) { }
@@ -19,8 +21,24 @@ export class NotificationComponent implements OnInit{
 
     ngOnInit(): void {
         this.service.getNotifications().subscribe(
-            res =>{ this.notifications = res;
-            console.log(res);
+            res =>{ 
+            
+            console.log(res)
+
+            for (var val of res) {
+                if(val.read)
+                this.readNotifications.push(val)
+              }
+            this.readNotifications.sort((y, x) => +new Date(x.date) - +new Date(y.date));
+
+            for (var val of res) {
+                if(!val.read)
+                this.unreadNotifications.push(val)
+              }
+            this.unreadNotifications.sort((y, x) => +new Date(x.date) - +new Date(y.date));
+            
+            this.notifications = [ ...this.unreadNotifications, ...this.readNotifications];
+ 
             }
           );
         this.service.getPharmacyName().subscribe(
