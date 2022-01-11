@@ -1,0 +1,16 @@
+.cards{
+    position: absolute;
+    margin-top: 70px;
+    width: 80%;
+    margin-left: 376px;
+    
+}
+
+.btn{
+    background-color: white; 
+    border-color: lightgray;
+    color: skyblue;
+    font-size: x-large;
+    font-weight: bold;
+    opacity: 70%;
+}

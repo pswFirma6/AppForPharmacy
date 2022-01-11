@@ -4,11 +4,11 @@
 
 
             <div class="cards text-center" >
-                <div class="card-body" *ngFor='let prescription of prescriptions'>
+                <div class="card-body" *ngFor='let s of prescriptions'>
                     <div class="form-control">
                         <label><b>File name:</b></label><br/>
-                        {{prescription.substring(94)}}<br/><br/>
-                        <button class="btn" (click)="OpenPdf(prescription)">Open pdf file</button>
+                        {{s.substring(95)}}<br/><br/>
+                        <button class="btn" (click)="OpenSpecPdf(s)">Open pdf file</button>
                         
                     </div>
 

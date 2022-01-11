@@ -1,4 +1,5 @@
 import { HttpClient } from "@angular/common/http";
+import { SafePropertyRead } from "@angular/compiler";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { NotificationsModel } from "../shared/notifications.model";
@@ -23,7 +24,8 @@ export class NotificationsService{
   }
 
   getNotifications() : Observable<NotificationsModel[]> {
-    return this.http.get<NotificationsModel[]>(this.getNotificationsURL)
+
+    return this.http.get<NotificationsModel[]>(this.getNotificationsURL);
   }
 
   updateNotification(notification:NotificationsModel) {

@@ -21,6 +21,7 @@ import { PrescriptionsComponent } from './prescriptions/prescriptions.component'
 import { NavbarReportsComponent } from './navbar-reports/navbar-reports.component';
 import { TenderComponent } from './tender/tender.component';
 import { TendersComponent } from './tenders/tenders.component';
+import { SpecificationsComponent } from './specifications/specifications.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { TendersComponent } from './tenders/tenders.component';
     PrescriptionsComponent,
     NavbarReportsComponent,
     TenderComponent,
-    TendersComponent
+    TendersComponent,
+    SpecificationsComponent
   ],
   imports: [
     BrowserModule,
@@ -51,6 +53,7 @@ import { TendersComponent } from './tenders/tenders.component';
       { path: 'consumptions', component: ConsumptionReportComponent },
       { path: 'notifications', component: NotificationComponent},
       { path: 'prescriptions', component: PrescriptionsComponent},
+      { path: 'specifications', component: SpecificationsComponent},
       { path: 'tenders', component: TenderComponent},
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: '**', redirectTo: 'home', pathMatch: 'full' }

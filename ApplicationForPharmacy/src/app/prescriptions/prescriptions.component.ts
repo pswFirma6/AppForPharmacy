@@ -21,7 +21,7 @@ export class PrescriptionsComponent implements OnInit {
 
   OpenPdf(prescription: string){
     console.log('hit')
-    this.service.displayPdf(prescription.substring(85));
+    this.service.displayPdf(prescription.substring(94));
   }
 
 }
